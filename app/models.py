@@ -1,7 +1,5 @@
 from django.db import models
 
-from django.db import models
-
 class Cliente(models.Model):
     """ Empresa o agricultor que compra la lanza"""
     #id automatico con autoincremento
@@ -69,5 +67,5 @@ class MateriaPrima(models.Model):
         return self.nombre
 
     class Meta:
-        verbose_name_plural = 'Materia Prima'
+        verbose_name_plural = 'Materias Primas'
         ordering = ('nombre', )
