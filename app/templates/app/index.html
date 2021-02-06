@@ -1,0 +1,83 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+	Composite App Data
+{% endblock %}
+
+{% block page_content %}
+<br>
+<div class="page-header">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="card">
+			 	<div class="card-body">
+			    	<h3 class="card-title"><b>Datos Cliente</b></h3>
+			  	</div>
+			  	<ul class="list-group list-group-flush">
+			    	<li class="list-group-item">Nombre: <br>
+			    		{{ cliente.nombre }}</li>
+			    	<li class="list-group-item">Email: <br>
+			    		{{ cliente.email }}</li>
+			    	<li class="list-group-item">Dirección: <br>
+			    		{{ cliente.direccion }}</li>
+			  	</ul>
+			  	<div class="card-body">
+			    	<a href="#" class="card-link">Mi empresa</a>
+		  		</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card">
+		  		<div class="card-body">
+		    		<h3 class="card-title"><b>Datos Lanza</b></h3>
+		  		</div>
+		  		<ul class="list-group list-group-flush">
+		  			{% for lanza in lanzas %}
+		    		<li class="list-group-item">Código: <br>
+		    			{{ lanza.codigo }}</li>
+		    		<li class="list-group-item">Modelo: <br>
+		    			{{ lanza.modelo }}</li>
+		    		<li class="list-group-item">Serie: <br>
+		    			{{ lanza.numero_serie }}</li>
+		    		{% endfor %}
+		  		</ul>
+		  		<div class="card-body">
+		    		<a href="{% url 'app:registros' %}" class="card-link">Registros</a>
+		  		</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<h3><b>Pilas</b></h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Predio</th>
+      <th scope="col">Fecha creación</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for pila in pilas %}
+	    <tr>
+	      <th scope="row">{{pila.id}}</th>
+	      <th>{{pila.nombreID}}</th>
+	      <td>{{pila.predio}}</td>
+	      <td>{{pila.fecha_creacion|date:"d-m-Y"}}</td>
+	      <td>{{pila.estado}}</td>
+	      <th>
+	      	<a class="btn btn-warning" href="{% url 'app:nueva' %}" role="button">Editar</a>
+	      	<a class="btn btn-danger" href="#" role="button">Eliminar</a>
+	      </th>
+	    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a class="btn btn-primary" href="{% url 'app:nueva' %}" role="button">Agregar Pila</a>
+
+{% endblock %}
