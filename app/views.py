@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from django.utils import timezone
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .models import *
 
 def index(request):
@@ -14,11 +15,14 @@ def index(request):
 		'pilas': pilas,
 	}
 	return render(request, 'app/index.html', context)
-
+"""
 def nuevaPila(request):
 	
 	return render(request, 'app/nueva_pila.html')
-
+"""
+class PilaCreate(CreateView):
+	model = Pila
+	fields = ['nombreID', 'predio', 'estado', 'cliente'] 
 """
 def registros(request):
 
@@ -36,3 +40,5 @@ class RegistrosView(generic.ListView):
 		context['now'] = timezone.now()
 		context['pilas'] = Pila.objects.all()
 		return context
+
+

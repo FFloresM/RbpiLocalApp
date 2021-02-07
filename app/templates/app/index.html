@@ -70,14 +70,15 @@
 	      <td>{{pila.fecha_creacion|date:"d-m-Y"}}</td>
 	      <td>{{pila.estado}}</td>
 	      <th>
-	      	<a class="btn btn-warning" href="{% url 'app:nueva' %}" role="button">Editar</a>
-	      	<a class="btn btn-danger" href="#" role="button">Eliminar</a>
+	      	<a class="btn btn-warning btn-sm" href="#" role="button">Editar</a>
+	      	<a class="btn btn-primary btn-sm" href="#" role="button">Ver datos</a>
+	      	<a class="btn btn-danger btn-sm" href="#" role="button">Eliminar</a>
 	      </th>
 	    </tr>
     {% endfor %}
   </tbody>
 </table>
 
-<a class="btn btn-primary" href="{% url 'app:nueva' %}" role="button">Agregar Pila</a>
+<a class="btn btn-primary" href="{% url 'app:pila-nueva' %}" role="button">Agregar Pila</a>
 
 {% endblock %}
