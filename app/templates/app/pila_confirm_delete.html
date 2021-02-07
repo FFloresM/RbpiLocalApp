@@ -1,0 +1,18 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+	Eliminar Pila
+{% endblock %}
+
+{% block page_content %}
+<br>
+<form method="post">
+	{% csrf_token %}
+	<div class="alert alert-danger" role="alert">
+  		Estás por eliminar "{{ object }}"
+	</div>
+    <p>¿estás seguro?</p>
+
+    <input type="submit" value="Confirmar">
+</form>
+{% endblock %}

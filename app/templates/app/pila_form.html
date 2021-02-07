@@ -6,62 +6,20 @@
 
 {% block page_content %}
 <br>
-<form method="POST" enctype="multipart/form-data"> 
-  
-    <!-- Security token -->
-    {% csrf_token %} 
+<h3>Pila nueva</h3>
+<div class="container">
+	<form method="POST" enctype="multipart/form-data"> 
+	    <!-- Security token -->
+	    {% csrf_token %} 
 
-     <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-
-
-
-
-    
-  
-    <!-- Using the formset -->
-    <table border="1">
-
-      <tr>
-        <th>{{ form.nombreID.label_tag }}</th>
-        <td>
-          {{ form.nombreID.errors }}
-          {{ form.nombreID }}
-        </td>
-      </tr>
-
-      <tr>
-        <th>{{ form.predio.label_tag }}</th>
-        <td>
-          {{ form.predio.errors }}
-          {{ form.predio }}
-        </td>
-      </tr>
-
-      <tr>
-        <th>{{ form.message.label_tag }}</th>
-        <td>
-          {{ form.message.errors }}
-          {{ form.message }}
-          <br />
-          {{ form.message.help_text }}
-        </td>
-      </tr>
-
-  </table>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form> 
+	    {% for field in form %}
+	    <div class="form-group">
+		    <label for="{{ field.name }}">{{ field.label }}</label>
+		    {{ field }}
+	  	</div>
+	  	{% endfor %}
+	  	<br>
+	  <input type="submit" class="btn btn-primary" value="Guardar">
+	</form>
+</div> 
 {% endblock %}

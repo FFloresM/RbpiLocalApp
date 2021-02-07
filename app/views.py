@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views import generic
 from django.utils import timezone
+from django.urls import reverse, reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .models import *
+from .forms import *
 
 def index(request):
 	cliente = Cliente.objects.get(id=1)
@@ -22,7 +23,16 @@ def nuevaPila(request):
 """
 class PilaCreate(CreateView):
 	model = Pila
-	fields = ['nombreID', 'predio', 'estado', 'cliente'] 
+	form_class = PilaCreateForm
+
+	def get_success_url(self):
+		return reverse('app:index')
+
+class PilaDelete(DeleteView):
+	model = Pila
+	success_url = reverse_lazy('app:index')
+
+
 """
 def registros(request):
 
