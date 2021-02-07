@@ -41,10 +41,7 @@ class Pila(models.Model):
 
     class Meta:
         ordering = ('cliente', )
-    """
-    def get_absolute_url(self):
-    	return reverse('index', kwargs={'pk': self.pk})
-	"""
+
 class Medicion(models.Model):
     """Datos que son medidos por la lanza"""
     fecha_creacion = models.DateTimeField("fecha de creacion", auto_now_add=True)

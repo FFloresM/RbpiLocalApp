@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views import generic
 from django.utils import timezone
@@ -16,11 +17,7 @@ def index(request):
 		'pilas': pilas,
 	}
 	return render(request, 'app/index.html', context)
-"""
-def nuevaPila(request):
-	
-	return render(request, 'app/nueva_pila.html')
-"""
+
 class PilaCreate(CreateView):
 	model = Pila
 	form_class = PilaCreateForm
@@ -32,12 +29,22 @@ class PilaDelete(DeleteView):
 	model = Pila
 	success_url = reverse_lazy('app:index')
 
+class PilaUpdate(UpdateView):
+	model = Pila
+	form_class = PilaUpdateForm
+	success_url = reverse_lazy('app:index')
 
-"""
-def registros(request):
+def medicionesPila(request, pk):
+	pila = Pila.objects.get(id=pk)
+	query = Medicion.objects.filter(pila=pila)
+	context = {
+		'registros': query,
+		'pila': pila,
+	}
+	return render(request, 'app/mediciones_pila.html', context)
+	
 
-	return render(request, 'app/registros.html')
-"""
+
 class RegistrosView(generic.ListView):
 	model = Medicion
 	context_object_name = 'mediciones'

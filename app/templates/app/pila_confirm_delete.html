@@ -9,10 +9,10 @@
 <form method="post">
 	{% csrf_token %}
 	<div class="alert alert-danger" role="alert">
-  		Estás por eliminar "{{ object }}"
+  		Vas a eliminar Pila "{{ object }}"
 	</div>
     <p>¿estás seguro?</p>
 
-    <input type="submit" value="Confirmar">
+    <input class="btn btn-danger btn-sm" type="submit" value="Confirmar">
 </form>
 {% endblock %}
