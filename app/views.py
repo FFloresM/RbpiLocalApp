@@ -37,9 +37,13 @@ class PilaUpdate(UpdateView):
 def medicionesPila(request, pk):
 	pila = Pila.objects.get(id=pk)
 	query = Medicion.objects.filter(pila=pila)
+	first = None
+	if query:
+		first = query[0]
 	context = {
 		'registros': query,
 		'pila': pila,
+		'first': first,
 	}
 	return render(request, 'app/mediciones_pila.html', context)
 	
@@ -58,4 +62,5 @@ class RegistrosView(generic.ListView):
 		context['pilas'] = Pila.objects.all()
 		return context
 
-
+def chart(request):
+	return render(request, 'app/chart.html')

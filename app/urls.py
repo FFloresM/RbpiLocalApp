@@ -10,6 +10,8 @@ urlpatterns = [
 	path('pila/<int:pk>/editar', PilaUpdate.as_view(), name='pila-update'),
 
 	path('registros', RegistrosView.as_view(), name='registros'),
-	path('registros/<int:pk>', medicionesPila, name='mediciones-pila')
+	path('registros/<int:pk>', medicionesPila, name='mediciones-pila'),
+
+	path('chart', chart, name='chart'),
 
 ]

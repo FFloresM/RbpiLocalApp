@@ -10,7 +10,10 @@
     </title>
     {% load static %}  
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>   
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'app/js/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'app/js/Chart.js' %}"></script>
+
      
   </head>
   <body>
@@ -24,7 +27,7 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link" href="/app/registros">Registros</a>
-              <a class="nav-link" href="#">Grafico</a>
+              <a class="nav-link" href="{% url 'app:chart' %}">Grafico</a>
               
             </div>
           </div>

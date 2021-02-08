@@ -5,8 +5,10 @@
 {% endblock %}
 
 {% block page_content %}
+<br>
 <h3>Mediciones para Pila {{ pila.nombreID }}</h3>
-
+<p><b>Posición:</b> {{ first.posicion }}</p>
+<p><b>Lanza:</b> {{ first.lanza }}</p>
 {% if registros %}
 
 <table class="table table-hover">
@@ -15,20 +17,14 @@
         <th scope="col">Fecha</th>
         <th scope="col">Temperatura</th>
         <th scope="col">Humedad</th>
-        <th scope="col">Foto</th>
-        <th scope="col">Posición</th>
-        <th scope="col">Lanza</th>
       </tr>
     </thead>
     <tbody>
         {% for medicion in registros %}
           <tr>
-            <td>{{ medicion.fecha_creacion }}</td>
+            <td>{{ medicion.fecha_creacion|date:'d/m/Y' }}</td>
             <td>{{medicion.temperatura}}</td>
             <td>{{medicion.humedad}}</td>
-            <td>{{medicion.foto}}</td>
-            <td>{{medicion.posicion}}</td>
-            <td>{{medicion.lanza}}</td>
           </tr>
       {% endfor %}
     </tbody>

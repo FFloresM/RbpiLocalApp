@@ -23,7 +23,7 @@
   	{% for medicion in mediciones %}
   		{% if medicion.pila == pila %}
 	    <tr>
-	      <td>{{ medicion.fecha_creacion }}</td>
+	      <td>{{ medicion.fecha_creacion|date:'d/m/Y' }}</td>
 	      <td>{{medicion.temperatura}}</td>
 	      <td>{{medicion.humedad}}</td>
 	    </tr>
