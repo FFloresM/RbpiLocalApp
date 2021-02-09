@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block page_content %}
-
+<br>
 <h3><b>Registros</b></h3>
 {{ now }}
-
+{% if mediciones %}
 {% for pila in pilas %}
 <h4>Pila {{ pila.nombreID }}</h4>
 <table class="table table-hover">
@@ -33,5 +33,9 @@
 </table>
 
 {% endfor %}
+{% else %}
+<h4 style="color: red;">No existen datos</h4>
+
+{% endif %}
 
 {% endblock %}

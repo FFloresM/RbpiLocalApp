@@ -6,7 +6,7 @@
 
 {% block page_content %}
 <br>
-<h3>Pila nueva</h3>
+<h3>Editar Pila</h3>
 <div class="container">
 	<form method="POST" enctype="multipart/form-data"> 
 	    <!-- Security token -->
@@ -19,8 +19,10 @@
 	  	</div>
 	  	{% endfor %}
 	  	<br>
-	  <input type="submit" class="btn btn-primary" value="Guardar">
+        <div class="btn-group" role="group">
+            <input type="submit" class="btn btn-primary" value="Guardar">
+            <a class="btn btn-secondary" href="{% url 'app:materia-prima-nueva' %}" role="button">Agregar Materia Prima</a>
+        </div>
 	</form>
-	<a class="btn btn-primary" href="{% url 'app:materia-prima-nueva' %}" role="button">Agregar Materia Prima</a>
 </div> 
 {% endblock %}

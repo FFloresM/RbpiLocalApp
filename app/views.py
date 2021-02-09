@@ -32,6 +32,12 @@ class PilaDelete(DeleteView):
 class PilaUpdate(UpdateView):
 	model = Pila
 	form_class = PilaUpdateForm
+	template_name = 'app/pila_update.html'
+	success_url = reverse_lazy('app:index')
+
+class MateriaPrimaCreate(CreateView):
+	model = MateriaPrima
+	form_class = MateriaPrimaCreateForm
 	success_url = reverse_lazy('app:index')
 
 def medicionesPila(request, pk):

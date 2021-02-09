@@ -1,12 +1,12 @@
 {% extends 'app/base.html' %}
 
 {% block title %}
-	Crear Pila
+	Agregar Materia Prima
 {% endblock %}
 
 {% block page_content %}
 <br>
-<h3>Pila nueva</h3>
+<h3>Agregar Materia Prima</h3>
 <div class="container">
 	<form method="POST" enctype="multipart/form-data"> 
 	    <!-- Security token -->
@@ -21,6 +21,5 @@
 	  	<br>
 	  <input type="submit" class="btn btn-primary" value="Guardar">
 	</form>
-	<a class="btn btn-primary" href="{% url 'app:materia-prima-nueva' %}" role="button">Agregar Materia Prima</a>
 </div> 
 {% endblock %}

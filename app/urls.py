@@ -8,6 +8,7 @@ urlpatterns = [
 	path('pila/nueva', PilaCreate.as_view(), name='pila-nueva'),
 	path('pila/<int:pk>/eliminar', PilaDelete.as_view(), name='pila-delete'),
 	path('pila/<int:pk>/editar', PilaUpdate.as_view(), name='pila-update'),
+	path('materia-prima/agregar', MateriaPrimaCreate.as_view(), name='materia-prima-nueva'),
 
 	path('registros', RegistrosView.as_view(), name='registros'),
 	path('registros/<int:pk>', medicionesPila, name='mediciones-pila'),

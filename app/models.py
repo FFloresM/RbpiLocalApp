@@ -50,7 +50,7 @@ class Medicion(models.Model):
     foto = models.ImageField(upload_to='Fotos', null=True, blank=True) #crear folder Fotos
     posicion = models.CharField(max_length=20, null=True) #solo para prubas
     lanza = models.ForeignKey('Lanza', on_delete=models.DO_NOTHING)
-    pila = models.ForeignKey('Pila', on_delete=models.DO_NOTHING, null=True)
+    pila = models.ForeignKey('Pila', on_delete=models.CASCADE, null=True)
 
     class Meta:
         verbose_name_plural = 'Mediciones'
@@ -61,7 +61,7 @@ class MateriaPrima(models.Model):
     nombre = models.CharField(max_length=100, null=False)
     cantidad = models.IntegerField(null=False)
     unidad_medida = models.CharField(max_length=10, null=True)
-    medicion = models.ForeignKey('Pila', on_delete=models.DO_NOTHING)
+    pila = models.ForeignKey('Pila', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre

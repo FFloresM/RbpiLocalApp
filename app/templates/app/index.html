@@ -49,6 +49,7 @@
 	</div>
 </div>
 <br>
+{% if pilas %}
 <h3><b>Pilas</b></h3>
 <table class="table table-hover">
   <thead>
@@ -78,7 +79,9 @@
     {% endfor %}
   </tbody>
 </table>
-
+{% else %}
+<h4>No existen pilas registradas</h4>
+{% endif %}
 <a class="btn btn-primary" href="{% url 'app:pila-nueva' %}" role="button">Agregar Pila</a>
 
 {% endblock %}
