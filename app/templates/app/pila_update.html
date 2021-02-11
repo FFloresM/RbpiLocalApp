@@ -1,7 +1,7 @@
 {% extends 'app/base.html' %}
 
 {% block title %}
-	Crear Pila
+	Editar Pila
 {% endblock %}
 
 {% block page_content %}
@@ -19,10 +19,9 @@
 	  	</div>
 	  	{% endfor %}
 	  	<br>
-        <div class="btn-group" role="group">
-            <input type="submit" class="btn btn-primary" value="Guardar">
-            <a class="btn btn-secondary" href="{% url 'app:materia-prima-nueva' %}" role="button">Agregar Materia Prima</a>
-        </div>
+        <div class="container">
+			<input type="submit" class="btn btn-primary" value="Guardar">
+		</div>
 	</form>
 </div> 
 {% endblock %}

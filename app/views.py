@@ -43,13 +43,11 @@ class MateriaPrimaCreate(CreateView):
 def medicionesPila(request, pk):
 	pila = Pila.objects.get(id=pk)
 	query = Medicion.objects.filter(pila=pila)
-	first = None
-	if query:
-		first = query[0]
+	materia_prima = MateriaPrima.objects.filter(pila=pila)
 	context = {
 		'registros': query,
 		'pila': pila,
-		'first': first,
+		'materia_prima': materia_prima,
 	}
 	return render(request, 'app/mediciones_pila.html', context)
 	
@@ -68,5 +66,25 @@ class RegistrosView(generic.ListView):
 		context['pilas'] = Pila.objects.all()
 		return context
 
-def chart(request):
-	return render(request, 'app/chart.html')
+def chart(request, pk):
+	mediciones = Medicion.objects.filter(pila__id=pk)
+	pila = Pila.objects.get(id=pk)
+	temps = mediciones.values_list('temperatura', flat=True)
+	dates = mediciones.values_list('fecha_creacion', flat=True)
+	dias = [date.day for date in dates ]
+	humedad = mediciones.values_list('humedad', flat=True)
+	context = {
+		'pila': pila,
+		'temps': list(temps),
+		'dias': dias,
+		'dates': dates,
+		'humedad': list(humedad),
+	}
+	return render(request, 'app/chart_pila.html', context)
+
+def allCharts(request):
+	mediciones = Medicion.objects.all()
+	context = {
+		'mediciones': mediciones,
+	}
+	return render(request, 'app/chart.html', context)

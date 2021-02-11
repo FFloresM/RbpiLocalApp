@@ -13,6 +13,7 @@ urlpatterns = [
 	path('registros', RegistrosView.as_view(), name='registros'),
 	path('registros/<int:pk>', medicionesPila, name='mediciones-pila'),
 
-	path('chart', chart, name='chart'),
+	path('chart/<int:pk>', chart, name='chart'),
+	path('chart', allCharts, name='all-charts'),
 
 ]

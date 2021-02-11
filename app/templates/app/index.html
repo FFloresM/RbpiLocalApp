@@ -54,7 +54,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Id</th>
+      <th scope="col">#</th>
       <th scope="col">Nombre</th>
       <th scope="col">Predio</th>
       <th scope="col">Fecha creación</th>
@@ -65,7 +65,7 @@
   <tbody>
   	{% for pila in pilas %}
 	    <tr>
-	      <th scope="row">{{pila.id}}</th>
+	      <th scope="row">{{forloop.counter}}</th>
 	      <th>{{pila.nombreID}}</th>
 	      <td>{{pila.predio}}</td>
 	      <td>{{pila.fecha_creacion|date:"d-m-Y"}}</td>
@@ -83,5 +83,6 @@
 <h4>No existen pilas registradas</h4>
 {% endif %}
 <a class="btn btn-primary" href="{% url 'app:pila-nueva' %}" role="button">Agregar Pila</a>
+<a class="btn btn-primary" href="{% url 'app:materia-prima-nueva' %}" role="button">Agregar Materia Prima</a>
 
 {% endblock %}

@@ -6,10 +6,50 @@
 
 {% block page_content %}
 <br>
-<h3>Mediciones para Pila {{ pila.nombreID }}</h3>
-<p><b>Posición:</b> {{ first.posicion }}</p>
-<p><b>Lanza:</b> {{ first.lanza }}</p>
+<h3>Registros para Pila {{ pila.nombreID }}</h3>
+
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td>
+        <b>Posición:</b> {{ pila.posicion }}<br>
+        <b>Predio:</b> {{ pila.predio }} <br>
+        <b>Estado:</b> {{ pila.estado }}
+      </td>
+      <td>
+        <img src="{{ pila.foto.url }}" alt="foto-pila"> 
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+{% if materia_prima %}
+<br>
+<h4> Materias Primas </h4>
+
+<table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Unidad medida</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for materia in materia_prima %}
+          <tr>
+            <td>{{ materia.nombre }}</td>
+            <td>{{materia.cantidad}}</td>
+            <td>{{materia.unidad_medida}}</td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
 {% if registros %}
+<br>
+<h4> Mediciones </h4>
 
 <table class="table table-hover">
     <thead>
@@ -29,9 +69,11 @@
       {% endfor %}
     </tbody>
   </table>
+
+  <a class="btn btn-primary" href="{% url 'app:chart' pila.id %}" role="button">Ver gráfico</a>
 {% else %}
     <div class="alert alert-warning" role="alert">
-        No existen geristros para pila {{pila.nombreID}}
+        No existen registros para pila {{pila.nombreID}}
     </div>
 {% endif %}
 

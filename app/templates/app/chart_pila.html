@@ -1,35 +1,35 @@
 {% extends "app/base.html" %}
 
 {% block title %}
-	GRAFICOS
+	GRAFICO PILA {{ pila.nombre.ID}}
 {% endblock %}
 
 {% block page_content %}
 <br>
-<h4 class="text-center">Gráficos de Registros</h4>
+<h4 class="text-center">Gráfico para Pila {{pila.nombreID}}</h4>
 <canvas id="myChart" width="400" height="200"></canvas>
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: [1,2,3,4,5,6,7,8,9,10],
+        labels: {{ dias }},
         datasets: [{
             label: 'Temperatura',
-            data: [10, 20, 30, 37, 42, 48, 50, 55, 60, 47],
+            data: {{ temps }},
             borderColor: "rgb(255,0,0)",
             fill: false
         },
         {
             label: "temp de volteo",
             borderColor: "rgb(0,0,0)",
-            data: [55, 55,55,55,55,55,55,55,55,55],
+            data: [55, 55,55,55,55],
             fill: false
         },
         {
             label: "Humedad",
             borderColor: "rgb(0,0,255)",
-            data: [10, 20, 15, 30, 26, 29, 19, 25, 30, 36],
+            data: {{ humedad }},
             fill: false
         }]
     },
