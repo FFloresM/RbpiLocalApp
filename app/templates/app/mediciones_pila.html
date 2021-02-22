@@ -17,9 +17,15 @@
         <b>Predio:</b> {{ pila.predio }} <br>
         <b>Estado:</b> {{ pila.estado }}
       </td>
-      <td>
-        <img src="{{ pila.foto.url }}" alt="foto-pila"> 
-      </td>
+      {% if pila.foto %}
+        <td>
+          <img src="{{ pila.foto.url }}" alt="foto-pila"> 
+        </td>
+      {% else %}
+        <td>
+          <p>Sin imagen</p>
+        </td>
+      {% endif %}
     </tr>
   </tbody>
 </table>

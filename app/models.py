@@ -30,10 +30,16 @@ class Lanza(models.Model):
 
 class Pila(models.Model):
     """Pila"""
+    estado_choices = [
+        ('mesófila', 'Fase I: mesófila'),
+        ('termófila', 'Fase II: termófila'),
+        ('enfriamiento', 'Fase III: enfriamiento'),
+        ('maduración', 'Fase IV: maduración'),
+    ]
     nombreID = models.CharField(max_length=10, default=None)
     predio = models.CharField(max_length=100)
     fecha_creacion = models.DateTimeField("fecha de creación", auto_now_add=True)
-    estado = models.CharField(max_length=50)
+    estado = models.CharField(max_length=50, choices=estado_choices)
     cliente = models.ForeignKey('Cliente', on_delete=models.DO_NOTHING, null=True)
     posicion = models.CharField(max_length=20, null=True) #solo para prubas
     foto = models.ImageField(upload_to='Fotos', null=True, blank=True) #folder Fotos

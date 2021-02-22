@@ -10,7 +10,7 @@ class PilaCreateForm(ModelForm):
 		widgets = {
 			'nombreID': TextInput(attrs={'class':'form-control', 'placeholder':'Nombre Pila'}),
 			'predio': TextInput(attrs={'class':'form-control', 'placeholder':'Predio'}),
-			'estado': TextInput(attrs={'class':'form-control', 'placeholder':'Estado'}),
+			'estado': Select(attrs={'class':'form-control', 'placeholder':'Estado'}),
 			'cliente': Select(attrs={'class':'form-control'}),
 		}
 
@@ -21,7 +21,7 @@ class PilaUpdateForm(ModelForm):
 		widgets = {
 			'nombreID': TextInput(attrs={'class':'form-control', 'placeholder':'Nombre Pila'}),
 			'predio': TextInput(attrs={'class':'form-control', 'placeholder':'Predio'}),
-			'estado': TextInput(attrs={'class':'form-control', 'placeholder':'Estado'}),
+			'estado': Select(attrs={'class':'form-control', 'placeholder':'Estado'}),
 		}
 
 class MateriaPrimaCreateForm(ModelForm):
