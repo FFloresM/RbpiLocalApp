@@ -1,4 +1,3 @@
-from django.db.models import fields
 from django.forms import ModelForm, TextInput, Select, NumberInput
 from .models import MateriaPrima, Pila
 

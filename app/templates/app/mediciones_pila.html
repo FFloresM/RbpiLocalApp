@@ -77,6 +77,7 @@
   </table>
 
   <a class="btn btn-primary" href="{% url 'app:chart' pila.id %}" role="button">Ver gráfico</a>
+  <a class="btn btn-primary" href="{% url 'app:pdf' pila.id %}" role="button">Reporte</a>
 {% else %}
     <div class="alert alert-warning" role="alert">
         No existen registros para pila {{pila.nombreID}}

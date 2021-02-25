@@ -16,4 +16,6 @@ urlpatterns = [
 	path('chart/<int:pk>', chart, name='chart'),
 	path('chart', allCharts, name='all-charts'),
 
+	path('reporte/<int:pk>', pdf_test, name='pdf'),
+
 ]
