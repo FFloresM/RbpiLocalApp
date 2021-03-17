@@ -8,9 +8,9 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from reportlab.lib import colors
 from .models import *
 from .forms import *
-from reportlab.pdfgen import canvas
-from reportlab.platypus import Table, TableStyle
-from reportlab.lib.pagesizes import letter, A4
+from .pdftezt import *
+from datetime import datetime
+
 
 def index(request):
 	cliente = Cliente.objects.get(id=1)
@@ -96,37 +96,29 @@ def allCharts(request):
 
 def pdf_test(request, pk):
 	#queries for models
-	mediciones = Medicion.objects.filter(pila__id=pk)
+	mediciones = Medicion.objects.filter(pila__id=pk).values_list()
 	pila = Pila.objects.get(id=pk)
+	cliente = Cliente.objects.get(id=pila.cliente_id)
+	lanza = Lanza.objects.get(cliente=cliente)
+	materiaprima = MateriaPrima.objects.filter(pila = pila).values_list()
 	# Create a file-like buffer to receive PDF data.
 	buffer = io.BytesIO()
-
+	hoy = datetime.today()
+	#datos y funciones para generar pdf
+	title = f"Reporte Pila {pila.nombreID}"
+	setTitle(title)
+	pageinfo = f"pila-{pila.nombreID}/{cliente.nombre}/{lanza.numero_serie}/"+hoy.strftime("%H:%M/%d-%m-%y")
+	setPageInfo(pageinfo)
+	setDataFirstTable(cliente, lanza, pila.foto.file.name)
+	setDetallePila(pila)
+	setMateriasPrimas(materiaprima)
+	setDataMediciones(mediciones)
+	temps = list(mediciones.values_list('temperatura', flat=True))
+	setTemps(temps)
+	humedad = list(mediciones.values_list('humedad', flat=True))
+	setHumedad(humedad)
 	# Create the PDF object, using the buffer as its "file."
-	p = canvas.Canvas(buffer, pagesize=letter)
-	title = f'Reporte Pila {pila.nombreID}'
-	p.setTitle(title)
-
-	width, height = letter 
-	#tabla
-	#data = [['1','2','3'],
-	#		['4','5','6']]
-	#t = Table(data)
-	#t.setStyle(TableStyle([('BACKGROUND', (1,1), (-2,-2), colors.green)]))
-	#w, h = t.wrapOn(p,400,100)
-	
-	# Draw things on the PDF. Here's where the PDF generation happens.
-	# See the ReportLab documentation for the full list of functionality.
-	p.drawString(100, 100, "Hello world.")
-	p.drawCentredString(100, height-10, title)
-
-	lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo rutrum libero eget posuere. Pellentesque ornare dignissim ante ut finibus. Curabitur id massa sit amet elit sagittis euismod sed sit amet ex. Morbi mauris felis, pulvinar eget est in, sodales bibendum quam. Aenean in arcu et arcu consectetur rutrum. Aliquam tellus arcu, auctor eu lacus sed, tempus accumsan tortor. Etiam rutrum, ante quis condimentum laoreet, nunc sapien accumsan nibh, sit amet aliquet dui ligula tincidunt dui. Ut pretium, massa nec egestas maximus, mauris leo sagittis diam, ac ullamcorper mi odio a ipsum. Vivamus imperdiet pharetra tellus, ac porttitor magna ornare nec. Nulla facilisi. Interdum et malesuada fames ac ante ipsum primis in faucibus."
-
-	p.drawCentredString(100,700, lorem)
-
-
-    # Close the PDF object cleanly, and we're done.
-	p.showPage()
-	p.save()
+	go(buffer)
 
 	# FileResponse sets the Content-Disposition header so that browsers
 	# present the option to save the file.
