@@ -113,10 +113,15 @@ def pdf_test(request, pk):
 	setDetallePila(pila)
 	setMateriasPrimas(materiaprima)
 	setDataMediciones(mediciones)
-	temps = list(mediciones.values_list('temperatura', flat=True))
-	setTemps(temps)
 	humedad = list(mediciones.values_list('humedad', flat=True))
-	setHumedad(humedad)
+	for v,h in enumerate(humedad):
+		humedad[v] = (v+1,h)
+	setHumedad(tuple(humedad))
+	temps = list(mediciones.values_list('temperatura', flat=True))
+	for v,t in enumerate(temps):
+		temps[v] = (v+1,t)
+	setTemps(tuple(temps))
+	
 	# Create the PDF object, using the buffer as its "file."
 	go(buffer)
 
