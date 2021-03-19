@@ -52,6 +52,10 @@
       {% endfor %}
     </tbody>
   </table>
+{% else %}
+<div class="alert alert-warning" role="alert">
+        No existen registros de materias primas para pila {{pila.nombreID}}
+    </div>
 {% endif %}
 {% if registros %}
 <br>
@@ -77,7 +81,7 @@
   </table>
 
   <a class="btn btn-primary" href="{% url 'app:chart' pila.id %}" role="button">Ver gráfico</a>
-  <a class="btn btn-primary" href="https://www.google.cl/maps/@-36.8174503,-73.0423481,14.21z" role="button">Ver Mapa</a>
+  <!--<a class="btn btn-primary" href="https://www.google.cl/maps/@-36.8174503,-73.0423481,14.21z" role="button">Ver Mapa</a>-->
   <a class="btn btn-primary" href="{% url 'app:pdf' pila.id %}" role="button">Reporte</a>
 {% else %}
     <div class="alert alert-warning" role="alert">

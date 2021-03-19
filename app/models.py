@@ -37,12 +37,12 @@ class Pila(models.Model):
         ('maduración', 'Fase IV: maduración'),
     ]
     nombreID = models.CharField(max_length=10, default=None)
-    predio = models.CharField(max_length=100)
     fecha_creacion = models.DateTimeField("fecha de creación", auto_now_add=True)
     estado = models.CharField(max_length=50, choices=estado_choices)
     cliente = models.ForeignKey('Cliente', on_delete=models.DO_NOTHING, null=True)
     posicion = models.CharField(max_length=20, null=True) #solo para prubas
     foto = models.ImageField(upload_to='Fotos', null=True, blank=True) #folder Fotos
+    predio = models.ForeignKey('Predio', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
     	return self.nombreID
@@ -75,3 +75,9 @@ class MateriaPrima(models.Model):
     class Meta:
         verbose_name_plural = 'Materias Primas'
         ordering = ('nombre', )
+
+class Predio(models.Model):
+    """Toda pila pertenece a un predio"""
+    nombre = models.CharField(max_length=100)
+    def __str__(self):
+        return self.nombre

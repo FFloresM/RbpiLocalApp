@@ -45,6 +45,12 @@ class MateriaPrimaCreate(CreateView):
 	form_class = MateriaPrimaCreateForm
 	success_url = reverse_lazy('app:index')
 
+class PredioCreate(CreateView):
+	model = Predio
+	fields = ['nombre']
+	success_url = reverse_lazy('app:index')
+
+
 def medicionesPila(request, pk):
 	pila = Pila.objects.get(id=pk)
 	query = Medicion.objects.filter(pila=pila)

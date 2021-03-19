@@ -18,19 +18,23 @@ var myChart = new Chart(ctx, {
             label: 'Temperatura',
             data: {{ temps }},
             borderColor: "rgb(255,0,0)",
-            fill: false
+            fill: false,
+            lineTension: 0
         },
         {
             label: "temp de volteo",
             borderColor: "rgb(0,0,0)",
             data: [55, 55,55,55,55],
-            fill: false
+            fill: false,
+            lineTension: 0,
+            radius: 0
         },
         {
             label: "Humedad",
             borderColor: "rgb(0,0,255)",
             data: {{ humedad }},
-            fill: false
+            fill: false,
+            lineTension: 0
         }]
     },
     options: {

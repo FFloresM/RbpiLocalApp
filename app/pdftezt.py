@@ -120,8 +120,8 @@ def getHumedad():
 
 def getPlot():
     drawing = Drawing(400, 200)
-    temps = [((0.5,7), (1.5,1), (2.5,2), (3.5,1), (4.5,3), (5.5,5), (6.5, 10), (7.5,6))]
-    #temps = [getTemps()]
+    #temps = [((0.5,7), (1.5,1), (2.5,2), (3.5,1), (4.5,3), (5.5,5), (6.5, 10), (7.5,6))]
+    temps = [getTemps()]
     bc = LinePlot()
     bc.x = 50
     bc.y = 50

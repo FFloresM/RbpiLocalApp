@@ -18,19 +18,24 @@ var myChart = new Chart(ctx, {
             label: 'Temperatura',
             data: [10, 20, 30, 37, 42, 48, 50, 55, 60, 47],
             borderColor: "rgb(255,0,0)",
-            fill: false
+            fill: false,
+            lineTension: 0
         },
         {
-            label: "temp de volteo",
+            label: "55°C",
             borderColor: "rgb(0,0,0)",
             data: [55, 55,55,55,55,55,55,55,55,55],
-            fill: false
+            borderDash: [5, 5],
+            fill: false,
+            lineTension: 0,
+            radius: 0
         },
         {
             label: "Humedad",
             borderColor: "rgb(0,0,255)",
             data: [10, 20, 15, 30, 26, 29, 19, 25, 30, 36],
-            fill: false
+            fill: false,
+            lineTension: 0,
         }]
     },
     options: {
@@ -51,10 +56,12 @@ var myChart = new Chart(ctx, {
                 position: 'left',
                 scaleLabel: {
                     display: true,
-                    labelString: 'temperatura',
+                    labelString: 'temperatura (°C)',
                 },
                 ticks: {
-                    beginAtZero: true
+                    max: 80,
+                    min: 0,
+                    stepSize: 10
                 }
             },
             {
@@ -63,7 +70,12 @@ var myChart = new Chart(ctx, {
                 position: 'right',
                 scaleLabel: {
                     display: true,
-                    labelString: 'humedad',
+                    labelString: 'humedad (%)',
+                },
+                ticks: {
+                    max: 100,
+                    min: 0,
+                    stepSize: 10
                 },
                 id: 'y-axis-1'
 			}]

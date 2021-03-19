@@ -5,22 +5,22 @@ from .models import MateriaPrima, Pila
 class PilaCreateForm(ModelForm):
 	class Meta:
 		model = Pila
-		fields = ['nombreID', 'predio', 'estado', 'cliente']
+		fields = ['nombreID', 'predio', 'cliente']
 		widgets = {
 			'nombreID': TextInput(attrs={'class':'form-control', 'placeholder':'Nombre Pila'}),
-			'predio': TextInput(attrs={'class':'form-control', 'placeholder':'Predio'}),
-			'estado': Select(attrs={'class':'form-control', 'placeholder':'Estado'}),
+			'predio': Select(attrs={'class':'form-control'}),
+			#'estado': Select(attrs={'class':'form-control', 'placeholder':'Estado'}),
 			'cliente': Select(attrs={'class':'form-control'}),
 		}
 
 class PilaUpdateForm(ModelForm):
 	class Meta:
 		model = Pila
-		fields = ['nombreID', 'predio', 'estado']
+		fields = ['nombreID', 'predio']#, 'estado']
 		widgets = {
 			'nombreID': TextInput(attrs={'class':'form-control', 'placeholder':'Nombre Pila'}),
-			'predio': TextInput(attrs={'class':'form-control', 'placeholder':'Predio'}),
-			'estado': Select(attrs={'class':'form-control', 'placeholder':'Estado'}),
+			'predio': Select(attrs={'class':'form-control', 'placeholder':'Predio'}),
+			#'estado': Select(attrs={'class':'form-control', 'placeholder':'Estado'}),
 		}
 
 class MateriaPrimaCreateForm(ModelForm):
