@@ -27,9 +27,7 @@ SECRET_KEY = 'rdiq&4udr90gr0irp(o!sdqn!fzrpcc%@ffavwe^vjg=8n&du('
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.18.98',
     '192.168.18.86',
-    '127.0.0.1',
 ]
 
 
@@ -125,11 +123,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_PATH, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-]
+PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
+#STATICFILES_DIRS = [
+#    os.path.join(PROJECT_PATH, 'static'),
+#]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
