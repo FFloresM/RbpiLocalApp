@@ -87,7 +87,7 @@ def setDataMediciones(mediciones):
     ]
     i = 1
     for m in mediciones:
-        m = list(m[1:-2])
+        m = list(m[1:-3])
         m[0] = m[0].strftime("%d-%m-%Y")
         data_mediciones.append(m)
         i=i+1

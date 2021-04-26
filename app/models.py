@@ -41,7 +41,6 @@ class Pila(models.Model):
     estado = models.CharField(max_length=50, choices=estado_choices)
     cliente = models.ForeignKey('Cliente', on_delete=models.DO_NOTHING, null=True)
     posicion = models.CharField(max_length=20, null=True) #solo para prubas
-    foto = models.ImageField(upload_to='Fotos', null=True, blank=True) #folder Fotos
     predio = models.ForeignKey('Predio', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
@@ -55,6 +54,7 @@ class Medicion(models.Model):
     fecha_creacion = models.DateTimeField("fecha de creacion", auto_now_add=True)
     temperatura = models.IntegerField(default=0)
     humedad = models.IntegerField(null=True)
+    foto = models.ImageField(upload_to='Fotos', null=True, blank=True) #folder Foto
     lanza = models.ForeignKey('Lanza', on_delete=models.DO_NOTHING)
     pila = models.ForeignKey('Pila', on_delete=models.CASCADE, null=True)
 

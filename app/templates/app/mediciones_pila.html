@@ -17,9 +17,9 @@
         <b>Predio:</b> {{ pila.predio }} <br>
         <b>Estado:</b> {{ pila.estado }}
       </td>
-      {% if pila.foto %}
+      {% if foto %}
         <td>
-          <img src="{{ pila.foto.url }}" alt="foto-pila"> 
+          <img src="{{ foto.url }}" alt="foto-pila" width="300" height="200"> 
         </td>
       {% else %}
         <td>
