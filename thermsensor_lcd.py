@@ -96,7 +96,6 @@ try:
 		medicion = Medicion(
 			temperatura=int(temp),
 			humedad=57,
-#			foto=my_photo,
 			lanza=lanza,
 			pila=pila_selected
 			)
@@ -105,13 +104,6 @@ try:
 		medicion.save()
 		print("objeto guardado en BD Local!!!")
 		#ENVIAR POR REST A REMOTO (solo si hay interneT)
-		#display.lcd_clear()
-		#display.lcd_display_string("DATOS", 1)
-		#display.lcd_display_string("GUARDADOS", 2)
-		#time.sleep(10)
-		#display.lcd_clear()
-#time.sleep(1)
-		#display.lcd_clear()
 		display.lcd_clear()
 except KeyboardInterrupt:
 	print("Terminado!")
